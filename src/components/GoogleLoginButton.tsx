@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { Google } from "lucide-react";
+import { Globe } from "lucide-react";
 
 interface GoogleLoginButtonProps {
   onClick: () => void;
@@ -13,7 +13,7 @@ const GoogleLoginButton = ({ onClick }: GoogleLoginButtonProps) => {
       className="w-full flex items-center justify-center gap-2 border-gray-300 hover:bg-gray-50 hover:text-hissabkitab-blue transition-all"
       onClick={onClick}
     >
-      <Google className="h-4 w-4" />
+      <Globe className="h-4 w-4" />
       <span>Continue with Google</span>
     </Button>
   );
