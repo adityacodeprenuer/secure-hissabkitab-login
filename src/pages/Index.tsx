@@ -12,7 +12,7 @@ const Index = () => {
             Your ultimate financial management solution
           </p>
           <div className="hidden md:block">
-            <div className="mt-10 bg-white/10 p-6 rounded-lg backdrop-blur-sm hover:bg-white/20 transition-all duration-300 animate-float">
+            <div className="mt-10 bg-white/10 p-6 rounded-lg backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
               <p className="italic text-white/90">
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
               </p>
