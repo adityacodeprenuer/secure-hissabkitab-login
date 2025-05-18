@@ -58,12 +58,12 @@ const LoginForm = () => {
   return (
     <div className="w-full max-w-md animate-fadeIn">
       <div className="mb-6 text-center">
-        <h1 className="text-3xl font-bold text-hissabkitab-blue">Sign In</h1>
-        <p className="text-gray-500 mt-2">Welcome back to HissabKitab</p>
+        <h1 className="text-3xl font-bold text-hissabkitab-blue animate-slideUp">Sign In</h1>
+        <p className="text-gray-500 mt-2 animate-slideUp" style={{ animationDelay: "0.1s" }}>Welcome back to HissabKitab</p>
       </div>
       
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="space-y-2">
+        <div className="space-y-2 animate-slideUp" style={{ animationDelay: "0.2s" }}>
           <Label htmlFor="email">Email</Label>
           <div className="relative">
             <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
@@ -73,18 +73,18 @@ const LoginForm = () => {
               placeholder="you@example.com"
               value={email}
               onChange={handleEmailChange}
-              className="pl-10"
+              className="pl-10 transition-all duration-300 hover:border-hissabkitab-teal focus:border-hissabkitab-teal"
               required
             />
           </div>
         </div>
         
-        <div className="space-y-2">
+        <div className="space-y-2 animate-slideUp" style={{ animationDelay: "0.3s" }}>
           <div className="flex items-center justify-between">
             <Label htmlFor="password">Password</Label>
             <a 
               href="#" 
-              className="text-sm text-hissabkitab-teal hover:text-hissabkitab-lightBlue"
+              className="text-sm text-hissabkitab-teal hover:text-hissabkitab-lightBlue transition-colors duration-300"
             >
               Forgot password?
             </a>
@@ -97,7 +97,7 @@ const LoginForm = () => {
               placeholder="••••••••"
               value={password}
               onChange={handlePasswordChange}
-              className="pl-10"
+              className="pl-10 transition-all duration-300 hover:border-hissabkitab-teal focus:border-hissabkitab-teal"
               required
             />
           </div>
@@ -105,24 +105,27 @@ const LoginForm = () => {
         
         <Button 
           type="submit" 
-          className="w-full bg-hissabkitab-blue hover:bg-hissabkitab-teal transition-colors"
+          className="w-full bg-hissabkitab-blue hover:bg-hissabkitab-teal transition-colors duration-300 transform hover:scale-[1.02] animate-slideUp"
+          style={{ animationDelay: "0.4s" }}
           disabled={isLoading}
         >
           {isLoading ? "Signing in..." : "Sign in"}
         </Button>
       </form>
       
-      <div className="my-6 flex items-center">
+      <div className="my-6 flex items-center animate-slideUp" style={{ animationDelay: "0.5s" }}>
         <Separator className="flex-grow" />
         <span className="mx-4 text-sm text-gray-500">OR</span>
         <Separator className="flex-grow" />
       </div>
       
-      <GoogleLoginButton onClick={handleGoogleLogin} />
+      <div className="animate-slideUp" style={{ animationDelay: "0.6s" }}>
+        <GoogleLoginButton onClick={handleGoogleLogin} />
+      </div>
       
-      <div className="mt-6 text-center text-sm">
+      <div className="mt-6 text-center text-sm animate-slideUp" style={{ animationDelay: "0.7s" }}>
         <span className="text-gray-500">Don't have an account?</span>{" "}
-        <a href="#" className="text-hissabkitab-teal hover:text-hissabkitab-lightBlue font-semibold">
+        <a href="#" className="text-hissabkitab-teal hover:text-hissabkitab-lightBlue font-semibold transition-colors duration-300">
           Sign up
         </a>
       </div>
