@@ -14,9 +14,9 @@ const Index = () => {
           <div className="hidden md:block">
             <div className="mt-10 bg-white/10 p-6 rounded-lg backdrop-blur-sm">
               <p className="italic text-white/90">
-                "HissabKitab revolutionized how we manage our finances. The platform is intuitive and powerful."
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
               </p>
-              <p className="mt-4 font-semibold">— Rajesh Kumar, CFO</p>
+              <p className="mt-4 font-semibold">— Lorem Ipsum</p>
             </div>
           </div>
         </div>
