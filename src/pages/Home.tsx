@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { User, LogOut, Home as HomeIcon, Menu, X, Bell, Settings, PlusCircle, Users } from "lucide-react";
+import { User, LogOut, Home as HomeIcon, Menu, X, Bell, Settings, PlusCircle, Users, Box } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import Dashboard from "@/components/Dashboard";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -25,6 +25,10 @@ const Home = () => {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const navigateTo = (path: string) => {
+    navigate(path);
   };
 
   return (
@@ -52,9 +56,13 @@ const Home = () => {
           </div>
           
           <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
-            <Button variant="ghost" className="w-full justify-start">
+            <Button variant="ghost" className="w-full justify-start" onClick={() => navigateTo('/home')}>
               <HomeIcon className="mr-2 h-4 w-4" />
               Dashboard
+            </Button>
+            <Button variant="ghost" className="w-full justify-start" onClick={() => navigateTo('/sales')}>
+              <Box className="mr-2 h-4 w-4" />
+              Sales
             </Button>
             <Button variant="ghost" className="w-full justify-start">
               <User className="mr-2 h-4 w-4" />

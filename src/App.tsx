@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
+import Sales from "./pages/Sales";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -45,6 +46,18 @@ const App = () => (
               /* In a real app, use this instead:
               <ProtectedRoute>
                 <Home />
+              </ProtectedRoute>
+              */
+            } 
+          />
+          
+          <Route 
+            path="/sales" 
+            element={
+              <Sales />
+              /* In a real app, use this instead:
+              <ProtectedRoute>
+                <Sales />
               </ProtectedRoute>
               */
             } 
