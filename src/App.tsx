@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Sales from "./pages/Sales";
+import Production from "./pages/Production";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -58,6 +59,18 @@ const App = () => (
               /* In a real app, use this instead:
               <ProtectedRoute>
                 <Sales />
+              </ProtectedRoute>
+              */
+            } 
+          />
+          
+          <Route 
+            path="/production" 
+            element={
+              <Production />
+              /* In a real app, use this instead:
+              <ProtectedRoute>
+                <Production />
               </ProtectedRoute>
               */
             } 

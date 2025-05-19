@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { User, LogOut, Home as HomeIcon, Menu, X, Bell, Settings, PlusCircle, Users, Box } from "lucide-react";
+import { User, LogOut, Home as HomeIcon, Menu, X, Bell, Settings, PlusCircle, Users, Box, Scissors } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import Dashboard from "@/components/Dashboard";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -63,6 +63,10 @@ const Home = () => {
             <Button variant="ghost" className="w-full justify-start" onClick={() => navigateTo('/sales')}>
               <Box className="mr-2 h-4 w-4" />
               Sales
+            </Button>
+            <Button variant="ghost" className="w-full justify-start" onClick={() => navigateTo('/production')}>
+              <Scissors className="mr-2 h-4 w-4" />
+              Production
             </Button>
             <Button variant="ghost" className="w-full justify-start">
               <User className="mr-2 h-4 w-4" />
