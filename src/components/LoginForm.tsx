@@ -7,9 +7,11 @@ import { Separator } from "@/components/ui/separator";
 import GoogleLoginButton from "@/components/GoogleLoginButton";
 import { Mail, User } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -43,8 +45,9 @@ const LoginForm = () => {
       setIsLoading(false);
       toast({
         title: "Success",
-        description: "Login successful! (This is just a demo)",
+        description: "Login successful!",
       });
+      navigate("/home");
     }, 1500);
   };
 
@@ -53,6 +56,8 @@ const LoginForm = () => {
       title: "Google Login",
       description: "Google login functionality would be implemented here",
     });
+    // After successful Google login, navigate to home
+    setTimeout(() => navigate("/home"), 1500);
   };
 
   return (
@@ -125,7 +130,7 @@ const LoginForm = () => {
       
       <div className="mt-6 text-center text-sm animate-slideUp" style={{ animationDelay: "0.7s" }}>
         <span className="text-gray-500">Don't have an account?</span>{" "}
-        <a href="#" className="text-hissabkitab-teal hover:text-hissabkitab-lightBlue font-semibold transition-colors duration-300">
+        <a href="/signup" className="text-hissabkitab-teal hover:text-hissabkitab-lightBlue font-semibold transition-colors duration-300">
           Sign up
         </a>
       </div>
