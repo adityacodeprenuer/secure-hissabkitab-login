@@ -68,7 +68,7 @@ const Home = () => {
               <Scissors className="mr-2 h-4 w-4" />
               Production
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
+            <Button variant="ghost" className="w-full justify-start" onClick={() => navigateTo('/profile')}>
               <User className="mr-2 h-4 w-4" />
               Profile
             </Button>
@@ -120,7 +120,7 @@ const Home = () => {
               </Button>
               
               <div className="flex items-center space-x-2">
-                <Avatar>
+                <Avatar className="cursor-pointer" onClick={() => navigate('/profile')}>
                   <AvatarImage src="/placeholder.svg" />
                   <AvatarFallback>U</AvatarFallback>
                 </Avatar>
