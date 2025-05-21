@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Sales from "./pages/Sales";
 import Production from "./pages/Production";
 import Profile from "./pages/Profile";
+import WorkerProfile from "./pages/WorkerProfile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -84,6 +85,18 @@ const App = () => (
               /* In a real app, use this instead:
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+              */
+            } 
+          />
+          
+          <Route 
+            path="/worker-profile" 
+            element={
+              <WorkerProfile />
+              /* In a real app, use this instead:
+              <ProtectedRoute>
+                <WorkerProfile />
               </ProtectedRoute>
               */
             } 
