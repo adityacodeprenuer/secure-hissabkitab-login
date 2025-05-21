@@ -42,29 +42,29 @@ const Profile = () => {
 
   // Mock user data (in real app, this would come from context/api)
   const [userData, setUserData] = useState({
-    name: "Rahul Sharma",
-    email: "rahul.sharma@example.com",
-    phone: "+91 98765 43210",
+    name: "Aditya Gupta",
+    email: "aditya.gupta@example.com",
+    phone: "+91 95432 12345",
     role: "Owner",
-    joinDate: "15 Jan, 2024",
+    joinDate: "5 Mar, 2024",
     profileImage: "/placeholder.svg",
-    address: "123 Main St, Delhi, India",
+    address: "456 Park Avenue, Mumbai, India",
     notifications: {
       email: true,
       push: true,
       sms: false,
     },
     businessDetails: {
-      companyName: "Sharma Textiles",
-      gstNumber: "27AAPFU0939F1Z5",
-      businessType: "Textile Manufacturing",
-      employees: "5-10"
+      companyName: "Gupta Fashion House",
+      gstNumber: "29AAPFG0123F1Z8",
+      businessType: "Apparel Manufacturing",
+      employees: "10-15"
     },
     statistics: {
-      totalSales: "₹250,000",
-      pendingPayments: "₹45,000",
-      completedOrders: "125",
-      pendingOrders: "8"
+      totalSales: "₹375,000",
+      pendingPayments: "₹65,000",
+      completedOrders: "187",
+      pendingOrders: "12"
     }
   });
 
