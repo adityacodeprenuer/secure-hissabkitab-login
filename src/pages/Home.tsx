@@ -72,6 +72,10 @@ const Home = () => {
               <User className="mr-2 h-4 w-4" />
               Profile
             </Button>
+            <Button variant="ghost" className="w-full justify-start" onClick={() => navigateTo('/worker-profile')}>
+              <Users className="mr-2 h-4 w-4" />
+              Worker Profile
+            </Button>
             {userType === "Owner" && (
               <Button variant="ghost" className="w-full justify-start">
                 <Users className="mr-2 h-4 w-4" />
