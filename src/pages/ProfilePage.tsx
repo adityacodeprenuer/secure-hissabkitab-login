@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { User, Mail, Phone, LogOut, Camera, Save } from "lucide-react";
+import { User, Mail, Phone, LogOut, Camera, Save, Instagram } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -28,6 +28,7 @@ interface UserProfile {
   phone: string;
   address: string;
   role: string;
+  instagram: string;
   profileImage: string;
 }
 
@@ -43,6 +44,7 @@ const ProfilePage = () => {
     phone: z.string().min(10, { message: "Please enter a valid phone number." }),
     address: z.string().min(5, { message: "Address must be at least 5 characters." }),
     role: z.string().min(2, { message: "Role is required." }),
+    instagram: z.string().optional(),
   });
 
   // Get user type from localStorage (in a real app, this would come from auth context)
@@ -55,6 +57,7 @@ const ProfilePage = () => {
     phone: "",
     address: "",
     role: userType,
+    instagram: "",
     profileImage: "/placeholder.svg"
   });
   
@@ -71,6 +74,7 @@ const ProfilePage = () => {
           phone: parsed.phone || "",
           address: parsed.address || "",
           role: parsed.role || "Worker",
+          instagram: parsed.instagram || "",
           profileImage: parsed.profileImage || "/placeholder.svg"
         };
         setInitialData(validProfile);
@@ -102,7 +106,12 @@ const ProfilePage = () => {
   const handleSaveProfile = (values: z.infer<typeof formSchema>) => {
     // Create a complete profile object with all required fields
     const updatedProfile: UserProfile = {
-      ...values,
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
+      address: values.address,
+      role: values.role,
+      instagram: values.instagram || "",
       profileImage: initialData.profileImage
     };
     
@@ -162,6 +171,11 @@ const ProfilePage = () => {
                     <div className="flex items-center justify-center md:justify-start gap-2">
                       <Phone className="h-4 w-4" /> {initialData.phone}
                     </div>
+                    {initialData.instagram && (
+                      <div className="flex items-center justify-center md:justify-start gap-2">
+                        <Instagram className="h-4 w-4" /> {initialData.instagram}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -213,6 +227,19 @@ const ProfilePage = () => {
                           <FormLabel>Phone</FormLabel>
                           <FormControl>
                             <Input placeholder="Your phone number" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="instagram"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Instagram</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your Instagram handle" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
