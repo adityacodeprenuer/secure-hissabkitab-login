@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Mail, Phone, Instagram } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 interface ProfileInfoProps {
@@ -8,10 +8,9 @@ interface ProfileInfoProps {
   userType: string;
   email: string;
   phone: string;
-  instagram: string;
 }
 
-const ProfileInfo = ({ name, userType, email, phone, instagram }: ProfileInfoProps) => {
+const ProfileInfo = ({ name, userType, email, phone }: ProfileInfoProps) => {
   return (
     <div className="flex-1 text-center md:text-left">
       <div className="flex flex-col md:flex-row md:items-center gap-2 mb-2">
@@ -26,11 +25,6 @@ const ProfileInfo = ({ name, userType, email, phone, instagram }: ProfileInfoPro
           <div className="flex items-center justify-center md:justify-start gap-2">
             <Phone className="h-4 w-4" /> {phone}
           </div>
-          {instagram && (
-            <div className="flex items-center justify-center md:justify-start gap-2">
-              <Instagram className="h-4 w-4" /> {instagram}
-            </div>
-          )}
         </div>
       )}
     </div>

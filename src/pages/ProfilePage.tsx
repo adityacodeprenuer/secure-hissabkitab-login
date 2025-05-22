@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { UserProfile } from "@/types/profile";
+import { UserProfile, PasswordUpdate } from "@/types/profile";
 import ProfileHeader from "@/components/profile/ProfileHeader";
 import ProfileAvatar from "@/components/profile/ProfileAvatar";
 import ProfileInfo from "@/components/profile/ProfileInfo";
@@ -27,7 +27,6 @@ const ProfilePage = () => {
     phone: "",
     address: "",
     role: userType,
-    instagram: "",
     profileImage: "/placeholder.svg"
   });
   
@@ -44,7 +43,6 @@ const ProfilePage = () => {
           phone: parsed.phone || "",
           address: parsed.address || "",
           role: parsed.role || "Worker",
-          instagram: parsed.instagram || "",
           profileImage: parsed.profileImage || "/placeholder.svg"
         };
         setInitialData(validProfile);
@@ -69,7 +67,6 @@ const ProfilePage = () => {
     phone: z.string(),
     address: z.string(),
     role: z.string(),
-    instagram: z.string().optional(),
   })>) => {
     // Create a complete profile object with all required fields
     const updatedProfile: UserProfile = {
@@ -78,7 +75,6 @@ const ProfilePage = () => {
       phone: values.phone,
       address: values.address,
       role: values.role,
-      instagram: values.instagram || "",
       profileImage: initialData.profileImage
     };
     
@@ -92,6 +88,21 @@ const ProfilePage = () => {
     toast({
       title: "Profile updated",
       description: "Your profile has been updated successfully",
+    });
+  };
+
+  const handlePasswordChange = (values: z.infer<typeof z.object({
+    currentPassword: z.string(),
+    newPassword: z.string(),
+    confirmPassword: z.string(),
+  })>) => {
+    // In a real app, this would make an API call to update the password
+    console.log("Password update requested:", values);
+    
+    // For demo purposes, we'll just show a success message
+    toast({
+      title: "Password updated",
+      description: "Your password has been changed successfully",
     });
   };
 
@@ -112,7 +123,6 @@ const ProfilePage = () => {
                 userType={userType}
                 email={initialData.email}
                 phone={initialData.phone}
-                instagram={initialData.instagram}
               />
               <Button 
                 variant="outline" 
@@ -128,6 +138,7 @@ const ProfilePage = () => {
               <ProfileForm 
                 initialData={initialData}
                 onSave={handleSaveProfile}
+                onPasswordChange={handlePasswordChange}
               />
             ) : (
               <ProfileDisplay
