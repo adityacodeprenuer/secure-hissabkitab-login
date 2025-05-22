@@ -21,6 +21,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
+// Define the user profile interface to ensure type safety
+interface UserProfile {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  role: string;
+  profileImage: string;
+}
+
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -39,7 +49,7 @@ const ProfilePage = () => {
   const [userType, setUserType] = useState("Worker");
   
   // Load initial data from localStorage if available
-  const [initialData, setInitialData] = useState({
+  const [initialData, setInitialData] = useState<UserProfile>({
     name: "",
     email: "",
     phone: "",
@@ -54,8 +64,17 @@ const ProfilePage = () => {
     if (savedProfile) {
       try {
         const parsed = JSON.parse(savedProfile);
-        setInitialData(parsed);
-        setUserType(parsed.role);
+        // Ensure all required fields are present with defaults if needed
+        const validProfile: UserProfile = {
+          name: parsed.name || "",
+          email: parsed.email || "",
+          phone: parsed.phone || "",
+          address: parsed.address || "",
+          role: parsed.role || "Worker",
+          profileImage: parsed.profileImage || "/placeholder.svg"
+        };
+        setInitialData(validProfile);
+        setUserType(validProfile.role);
       } catch (e) {
         console.error("Failed to parse saved profile");
       }
@@ -81,17 +100,16 @@ const ProfilePage = () => {
   };
 
   const handleSaveProfile = (values: z.infer<typeof formSchema>) => {
+    // Create a complete profile object with all required fields
+    const updatedProfile: UserProfile = {
+      ...values,
+      profileImage: initialData.profileImage
+    };
+    
     // Save to localStorage (in a real app, this would be sent to an API)
-    localStorage.setItem('userProfile', JSON.stringify({
-      ...values,
-      profileImage: initialData.profileImage
-    }));
+    localStorage.setItem('userProfile', JSON.stringify(updatedProfile));
     
-    setInitialData({
-      ...values,
-      profileImage: initialData.profileImage
-    });
-    
+    setInitialData(updatedProfile);
     setIsEditing(false);
     setUserType(values.role);
     
