@@ -12,6 +12,21 @@ import ProfileForm from "@/components/profile/ProfileForm";
 import ProfileDisplay from "@/components/profile/ProfileDisplay";
 import * as z from "zod";
 
+// Define schemas outside the component
+const profileFormSchema = z.object({
+  name: z.string(),
+  email: z.string(),
+  phone: z.string(),
+  address: z.string(),
+  role: z.string(),
+});
+
+const passwordFormSchema = z.object({
+  currentPassword: z.string(),
+  newPassword: z.string(),
+  confirmPassword: z.string(),
+});
+
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -61,13 +76,7 @@ const ProfilePage = () => {
     navigate("/");
   };
 
-  const handleSaveProfile = (values: z.infer<typeof z.object({
-    name: z.string(),
-    email: z.string(),
-    phone: z.string(),
-    address: z.string(),
-    role: z.string(),
-  })>) => {
+  const handleSaveProfile = (values: z.infer<typeof profileFormSchema>) => {
     // Create a complete profile object with all required fields
     const updatedProfile: UserProfile = {
       name: values.name,
@@ -91,11 +100,7 @@ const ProfilePage = () => {
     });
   };
 
-  const handlePasswordChange = (values: z.infer<typeof z.object({
-    currentPassword: z.string(),
-    newPassword: z.string(),
-    confirmPassword: z.string(),
-  })>) => {
+  const handlePasswordChange = (values: z.infer<typeof passwordFormSchema>) => {
     // In a real app, this would make an API call to update the password
     console.log("Password update requested:", values);
     
